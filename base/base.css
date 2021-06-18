@@ -1448,7 +1448,9 @@ div {
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 20px;
+	text-align: center;
+	overflow-y: hidden;
 }
 
 .w3sidebar a {
@@ -1467,7 +1469,7 @@ div {
 .w3sidebar .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 15px;
   font-size: 36px;
   margin-left: 50px;
 }
