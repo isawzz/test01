@@ -1,0 +1,4 @@
+{
+	"appService.defaultWebAppToDeploy": "/subscriptions/c3a4f7f2-c017-4e0f-bad9-4d0da733d6e0/resourceGroups/azure-test-mozart_rg/providers/Microsoft.Web/sites/animasimple",
+	"appService.deploySubpath": "."
+}

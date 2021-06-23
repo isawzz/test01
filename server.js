@@ -1,22 +1,46 @@
+const Verbose = true;
+const PORT = process.env.PORT || 3131;
+
+//#region require & const
+const BASEPATH = './public/BASE/';
+const SERVERCODE = './SERVER/';
+const DATAPATH = './public/DATA/';
+const path = require('path');
+const fs = require('fs');
+const base = require(BASEPATH + 'base.js');
+const common = require(SERVERCODE + 'common.js');
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const http = require('http').Server(app);
 
-//#region get routes
+//new code
+// var http = require("http");
+// var server = http.createServer(app);
+
+//old code
+const http = require('http').Server(app);
+var io = require('socket.io')(http, { cors: { origin: true } });
+
 app.all('/*', function (req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "X-Requested-With");
 	next();
 });
-app.use(express.static(__dirname)); //Serve public directory
+app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(cors());
-app.get('/', (req, res) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "X-Requested-With");
-	res.sendFile(__dirname+'/test999/index.html');
-});
+
+
 //#endregion
 
-const PORT = 2121;
-http.listen(process.env.PORT || PORT, () => { console.log('listening on port ' + PORT); });
+const logger = new common.LoggerSimple(Verbose, io);
+const userman = new common.UsermanClass(logger);
+
+io.on('connect', browser => {	
+	userman.handleConnectReplyClientId(browser);
+});
+
+http.listen(PORT, () => { console.log('listening on port ' + PORT); });
+
+
+

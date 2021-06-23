@@ -1,3 +1,20 @@
+function mPane(dParent,pos,styles,id){
+	console.log(pos,pos[0])
+	let d=mDiv(dParent,styles,id);
+	if (nundef(pos)) pos='t';else pos = pos[0].toLowerCase();
+	//docking
+	let posStyle={display:'flex'};
+	switch(pos){
+		case 't': addKeys({w:'100%'},posStyle); break;
+		case 'l': addKeys({h:'100%','flex-direction':'column'},posStyle); break;
+		case 'b': addKeys({w:'100%',position:'absolute',bottom:0},posStyle); break;
+		case 'r': addKeys({h:'100%','flex-direction':'column',position:'absolute',right:0},posStyle); break;
+
+	}
+	mStyleX(d,posStyle);
+	return d;
+}
+
 function mSidebar(title, dParent, styles, id, inner) {
 
 	let elem = createElementFromHtml(`
