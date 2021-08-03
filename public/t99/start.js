@@ -3,8 +3,8 @@ window.onload = start;
 async function start() {
 	let dMain = DA.dMain = mBy('dMain');
 	let dButtons = DA.dButtons = mPane(dMain, 't', { bg: 'random' });
-	let bConnect = mButton('connect 3131', ()=>onClickConnect(3131), dButtons, { margin: 4 }, 'flat');
-	let bConnect2 = mButton('connect 2121', ()=>onClickConnect(2121), dButtons, { margin: 4 }, 'flat');
+	let bConnect = mButton('connect 3131', () => onClickConnect(3131), dButtons, { margin: 4 }, 'flat');
+	let bConnect2 = mButton('connect 2121', () => onClickConnect(2121), dButtons, { margin: 4 }, 'flat');
 	let bDisconnect = mButton('disconnect', onClickDisconnect, dButtons, { margin: 4 }, 'flat');
 
 	//mClass(bConnect,"btn");//, "btn-primary");
@@ -15,11 +15,11 @@ async function start() {
 	// let d=mDiv(dTable,styles,null,'HALLOOOO');
 	// mLinebreak(dTable);
 
-	// let dParent = dTable.parentNode;
-	// let sidebar=mSidebar('hallo',dParent,{},'dSidebar');
+	//sidebar zeug is broken!!!!!!!
+	// let dParent = dMain.parentNode;
+	// let sidebar = mSidebar('hallo', dParent, {}, 'dSidebar');
 	// sidebar.fOpen();
-
-	// dTable.onclick=sidebar.fOpen;
+	// dMain.onclick = sidebar.fOpen;
 
 }
 
